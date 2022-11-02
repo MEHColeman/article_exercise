@@ -19,6 +19,8 @@ rescue LoadError
   # simplecov not installed. That's OK.
 end
 
+require 'capybara/rspec'
+
 
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|

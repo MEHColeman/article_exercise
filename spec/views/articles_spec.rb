@@ -24,5 +24,30 @@ RSpec.describe 'articles/index' do
       expect(rendered).to match('article 1 title')
       expect(rendered).to match('article 5 title')
     end
+
+    context 'with unliked articles' do
+      before(:each) do
+        assign(:articles, FactoryBot.build_list(:article, 1))
+      end
+      it 'displays an empty heart link to like the article' do
+        render
+
+        expect(rendered).to match('♡')
+      end
+
+    end
+
+    context 'with liked articles' do
+      before(:each) do
+        articles = FactoryBot.build_list(:article, 1)
+        assign(:articles, articles)
+        Like.create(article_id: articles.first.id)
+      end
+      it 'displays a full heart link to unlike the article' do
+        render
+
+        expect(rendered).to match('♥')
+      end
+    end
   end
 end

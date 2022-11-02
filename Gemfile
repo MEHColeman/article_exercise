@@ -50,6 +50,9 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 
 group :test do
+  gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 group :development, :test do
