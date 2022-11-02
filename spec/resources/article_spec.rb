@@ -7,12 +7,13 @@ RSpec.describe Article do
 
   before(:each) do
     ActiveResource::HttpMock.respond_to do |mock|
-      mock.get 'olio-staging-images/developer/test-articles-v4.json', {},
+      mock.get 'https://s3-eu-west-1.amazonaws.com/olio-staging-images/developer/test-articles-v4.json', {},
                File.read('spec/fixtures/two-test-articles.json')
     end
   end
   after(:each) do
     ActiveResource::HttpMock.reset!
+    ActiveResource::HttpMock.enable_net_connection!
   end
 
   it 'has an ID property' do
