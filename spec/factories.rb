@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
+  factory :like do
+    article { nil }
+  end
+
   factory :article do
     sequence(:id) { |n| n }
     sequence(:title) { |n| "article #{n} title" }
