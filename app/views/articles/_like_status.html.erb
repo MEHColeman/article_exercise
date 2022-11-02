@@ -1,0 +1,15 @@
+<% if liked %>
+  <% like_text = '♥' %>
+  <% like_action = 'unlike' %>
+<% else %>
+  <% like_text = '♡' %>
+  <% like_action = 'like' %>
+<% end %>
+
+<%= tag.div 'id': article_id,
+  'class': 'like',
+  'data-controller': 'like',
+  'data-action': "click->like##{like_action}",
+  'data-like-articleid-value': article_id do %>
+  <%= like_text %>
+<% end %>

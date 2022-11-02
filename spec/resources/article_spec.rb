@@ -31,4 +31,21 @@ RSpec.describe Article do
   it 'has an photo location url' do
     expect(subject.photo_url).to eq 'https://cdn.olioex.com/uploads/photo/file/00gRGrBRDFYrR2j-9SJVYg/image.jpg'
   end
+
+  describe '#liked?' do
+    context 'when a corresponding Like exists' do
+      before(:each) do
+        Like.create(article_id: 3899631)
+      end
+      it 'returns true' do
+        expect(subject.liked?).to be_truthy
+      end
+    end
+
+    context 'when a corresponding Like does not exist' do
+      it 'returns false' do
+        expect(subject.liked?).to be_falsey
+      end
+    end
+  end
 end
