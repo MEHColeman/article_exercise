@@ -14,4 +14,8 @@ class Article < ActiveResource::Base
   def photo_url
     photos.first.files.original
   end
+
+  def liked?
+    Like.all.map(&:article_id).include?(id)
+  end
 end
