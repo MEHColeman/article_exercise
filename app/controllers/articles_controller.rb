@@ -2,6 +2,7 @@
 
 class ArticlesController < ApplicationController
   def index
+    Rails.logger.info 'Retrieving all Articles'
     @articles = Article.all
   end
 end
